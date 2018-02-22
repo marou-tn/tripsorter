@@ -27,10 +27,10 @@ class Autoloader
             // on créé le chemin vers la classe
             // on utilise DS car plus propre et meilleure portabilité entre les différents systèmes (windows/linux)
 
-            $path = implode(DS, $parts);
+            $path = implode(DIRECTORY_SEPARATOR, $parts);
             $file = $className.'.php';
 
-            $filepath = ROOT. $path .''.DS.$file;
+            $filepath = DOCROOT. $path .''.DIRECTORY_SEPARATOR.$file;
 
             // var_dump($filepath); => C:\xampp\htdocs\Labs\Eloyas\app\tester\Test.php
             //

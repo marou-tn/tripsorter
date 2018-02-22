@@ -6,7 +6,7 @@
  * Time: 15:48
  */
 
-namespace Tripsorter\Config;
+namespace config;
 
 class Config
 {
@@ -15,9 +15,12 @@ class Config
 
     public static function getInstance()
     {
-        $class = ucfirst(trim($GLOBALS['env']));
+        $class = ucfirst(strtolower(trim($GLOBALS['env'])));
 
-        return new $class.'php';
+        $instance = new Local();
+        var_dump($instance);
+        die;
+        return $instance;
     }
 
 }

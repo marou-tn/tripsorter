@@ -6,7 +6,7 @@
  * Time: 15:35
  */
 
-namespace Tripsorter\Config;
+namespace config;
 
 class Local
 {

@@ -17,7 +17,7 @@ class FrontController implements FrontControllerInterface
     protected $controller    = self::DEFAULT_CONTROLLER;
     protected $action        = self::DEFAULT_ACTION;
     protected $params        = array();
-    protected $basePath      = "mybasepath/";
+    protected $basePath      = "api/";
 
     public function __construct(array $options = array()) {
         if (empty($options)) {
