@@ -16,11 +16,19 @@ class Router
     private function __construct() {}
     private function __clone() {}
 
+    /**
+     * @param $pattern url format
+     * @param $callback to trait url params
+     */
     public static function route($pattern, $callback) {
         $pattern = '/^' . str_replace('/', '\/', $pattern) . '$/';
         self::$routes[$pattern] = $callback;
     }
 
+    /**
+     * @param $url srtring
+     * @return mixed
+     */
     public static function execute($url) {
         foreach (self::$routes as $pattern => $callback) {
             if (preg_match($pattern, $url, $params)) {
