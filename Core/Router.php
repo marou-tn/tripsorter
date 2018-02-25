@@ -6,7 +6,7 @@
  * Time: 12:14
  */
 
-namespace Tripsorter\Core;
+namespace Core;
 
 
 class Router

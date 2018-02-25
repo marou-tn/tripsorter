@@ -6,7 +6,7 @@
  * Time: 17:43
  */
 
-namespace Tripsorter\Core;
+namespace Core;
 
 
 interface FrontControllerInterface

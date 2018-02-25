@@ -6,7 +6,7 @@
  * Time: 10:46
  */
 
-namespace Tripsorter\Core;
+namespace Core;
 
 class Autoloader
 {
@@ -17,7 +17,6 @@ class Autoloader
     public static function autoload($class){
         try{
             // var_dump($class); => App\Tester\Test
-
             // on explose notre variable $class par \
             $parts = preg_split('#\\\#', $class);
 

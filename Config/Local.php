@@ -6,16 +6,20 @@
  * Time: 15:35
  */
 
-namespace config;
+namespace Config;
 
-class Local
+class Local implements ConfigInterface
 {
     private $config = [
         'version' => 'v1',
+        'app' => [
+            'url' => 'loacalhost',
+            'base_url' => 'tripsorter/api',
+        ]
     ];
 
     /**
-     * @return array all config
+     * @return array all Config
      */
     public function getAll()
     {

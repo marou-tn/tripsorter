@@ -6,7 +6,7 @@
  * Time: 15:48
  */
 
-namespace config;
+namespace Config;
 
 class Config
 {
@@ -16,11 +16,9 @@ class Config
     public static function getInstance()
     {
         $class = ucfirst(strtolower(trim($GLOBALS['env'])));
+        $class = "\Config\\".$class;
 
-        $instance = new Local();
-        var_dump($instance);
-        die;
-        return $instance;
+        return new $class();
     }
 
 }

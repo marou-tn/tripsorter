@@ -7,30 +7,24 @@
  */
 
 define('DOCROOT', __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR);
-define('COREPATH', dirname(__DIR__).DIRECTORY_SEPARATOR.'core'.DIRECTORY_SEPARATOR);
+define('COREPATH', dirname(__DIR__).DIRECTORY_SEPARATOR.'Core'.DIRECTORY_SEPARATOR);
 
-//print_r(DOCROOT);die;
+//print_r(DOCROOT);
+//print_r(COREPATH);
 
 require COREPATH.'autoloader.php';
-class_alias('Tripsorter\\Core\\Autoloader', 'Autoloader');
+class_alias('Core\\Autoloader', 'Autoloader');
 
 Autoloader::register();
 
 $GLOBALS['env'] = getenv('TRIPSORT_ENV');
 
-use config\Config;
-use config\Local;
-use Tripsorter\core;
+use Core\FrontController;
 
 try {
-//    var_dump(class_exists("Tripsorter\Config\Config"));die;
-    $version = Config::getInstance();//->get('version');
-    print_r($version);die;
+    $frontController = new FrontController();
+    $frontController->run();
 
-    Router::route('api/'.$version.'/(\w+)/(\w+)', function($category, $id){
-        print $category . ':' . $id;
-    });
-    Router::execute($_SERVER['REQUEST_URI']);
 }Catch(Exception $e){
     print_r($e);
 }
