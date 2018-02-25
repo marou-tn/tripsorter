@@ -13,6 +13,6 @@ class JsonRequest implements RequestInterface
 {
     public function load()
     {
-        return json_decode(file_get_contents("php://input"), true);
+        return json_decode($_POST['BoardingCards']);
     }
 }

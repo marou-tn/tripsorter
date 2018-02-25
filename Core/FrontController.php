@@ -45,7 +45,7 @@ class FrontController implements FrontControllerInterface
         $base = $config->get('app.base_url');
         $version = $config->get('version');
 
-        $this->basePath = $base.'/'.$version.'/';
+//        $this->basePath = $base.'/'.$version.'/';
         $this->basePath = "tripsorter/public";
         return $this;
     }

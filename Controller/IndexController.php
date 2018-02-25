@@ -10,13 +10,33 @@ namespace Controller;
 
 
 use Core\JsonRequest;
+use Core\JsonRespense;
+use Services\BoardingCardMapper;
 
 class IndexController
 {
     public function index($params = array())
     {
-        $request = new JsonRequest();
-        $bc_arr = $request->load();
-        echo 'doen!';
+        try {
+            $request = new JsonRequest();
+            $boardingCard_arr = $request->load();
+//            print_r($boardingCard_arr);die;
+            $boardingCard_obj = [];
+            $respense = new JsonRespense();
+            $mapper = new BoardingCardMapper();
+
+            foreach ($boardingCard_arr as $bc) {
+                $boardingCard_obj[] = $mapper->map($bc);
+            }
+
+            foreach ($boardingCard_obj as $obj) {
+                $respense->add($obj.PHP_EOL.PHP_EOL);
+            }
+
+            echo $respense->load();
+        }catch (\Exception $e){
+            echo $e->getMessage();
+        }
+
     }
 }

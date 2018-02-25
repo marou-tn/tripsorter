@@ -12,12 +12,17 @@ namespace Objects;
 interface BoardingCardInterface
 {
     /**
-     * @return \Objects\DestinationInterface
+     * @return string from destination
      */
     public function getFrom();
 
     /**
-     * @return \Objects\DestinationInterface
+     * @return string to destination
      */
     public function getTo();
+
+    /**
+     * @return string readable human boarding card
+     */
+    public function __toString();
 }
