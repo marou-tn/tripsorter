@@ -11,5 +11,5 @@ namespace Core;
 
 interface RequestInterface
 {
-    public function load();
+    public function load($string = null);
 }

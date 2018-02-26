@@ -7,7 +7,7 @@
  */
 
 namespace Services;
-
+use Objects\BoardingCardInterface;
 
 class TripSorter
 {
@@ -22,9 +22,10 @@ class TripSorter
                     continue;
                 }
 
-                if (end($sorted)->getTo()->__toString() === $card->getFrom()->__toString()) {
-                    array_push($sorted, $card);
-                } elseif (reset($sorted)->getFrom()->__toString() === $card->getTo()->__toString()) {
+                if (end($sorted)->getTo() === $card->getFrom()) {
+//                    array_push($sorted, $card);
+                    $sorted[] = $card;
+                } elseif (reset($sorted)->getFrom() === $card->getTo()) {
                     array_unshift($sorted, $card);
                 }
 

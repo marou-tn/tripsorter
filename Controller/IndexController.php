@@ -12,6 +12,7 @@ namespace Controller;
 use Core\JsonRequest;
 use Core\JsonRespense;
 use Services\BoardingCardMapper;
+use Services\TripSorter;
 
 class IndexController
 {
@@ -21,7 +22,8 @@ class IndexController
             $request = new JsonRequest();
             $respense = new JsonRespense();
             $mapper = new BoardingCardMapper();
-            $boardingCard_arr = $request->load();
+            $sorter = new TripSorter();
+            $boardingCard_arr = $request->load('BoardingCards');
 //            print_r($boardingCard_arr);die;
             if ($boardingCard_arr) {
                 $boardingCard_obj = [];
@@ -29,7 +31,8 @@ class IndexController
                     $boardingCard_obj[] = $mapper->map($bc);
                 }
 
-                foreach ($boardingCard_obj as $obj) {
+                $boardingCards = $sorter->sort($boardingCard_obj);
+                foreach ($boardingCards as $obj) {
                     $respense->add($obj.PHP_EOL.PHP_EOL);
                 }
             }

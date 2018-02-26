@@ -15,6 +15,11 @@ class Local implements ConfigInterface
         'app' => [
             'url' => 'loacalhost',
             'base_url' => 'tripsorter/api',
+        ],
+        'transport' => [
+            'bus' => 'BubBoardingCard',
+            'train' => 'TrainBoardingCord',
+            'flight' => 'FlightBordingCard',
         ]
     ];
 
@@ -36,7 +41,11 @@ class Local implements ConfigInterface
         $sub_conf = $this->config;
         foreach ($keys as $key)
         {
-            $sub_conf = $sub_conf[$key];
+            if (isset($sub_conf[$key])) {
+                $sub_conf = $sub_conf[$key];
+            } else {
+                throw new \InvalidArgumentException('Invalid configuration key : '.$key);
+            }
         }
 
         return $sub_conf;
