@@ -19,18 +19,19 @@ class IndexController
     {
         try {
             $request = new JsonRequest();
-            $boardingCard_arr = $request->load();
-//            print_r($boardingCard_arr);die;
-            $boardingCard_obj = [];
             $respense = new JsonRespense();
             $mapper = new BoardingCardMapper();
+            $boardingCard_arr = $request->load();
+//            print_r($boardingCard_arr);die;
+            if ($boardingCard_arr) {
+                $boardingCard_obj = [];
+                foreach ($boardingCard_arr as $bc) {
+                    $boardingCard_obj[] = $mapper->map($bc);
+                }
 
-            foreach ($boardingCard_arr as $bc) {
-                $boardingCard_obj[] = $mapper->map($bc);
-            }
-
-            foreach ($boardingCard_obj as $obj) {
-                $respense->add($obj.PHP_EOL.PHP_EOL);
+                foreach ($boardingCard_obj as $obj) {
+                    $respense->add($obj.PHP_EOL.PHP_EOL);
+                }
             }
 
             echo $respense->load();
