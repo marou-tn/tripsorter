@@ -24,7 +24,6 @@ class IndexController
             $mapper = new BoardingCardMapper();
             $sorter = new TripSorter();
             $boardingCard_arr = $request->load('BoardingCards');
-//            print_r($boardingCard_arr);die;
             if ($boardingCard_arr) {
                 $boardingCard_obj = [];
                 foreach ($boardingCard_arr as $bc) {
@@ -35,6 +34,7 @@ class IndexController
                 foreach ($boardingCards as $obj) {
                     $respense->add($obj.PHP_EOL.PHP_EOL);
                 }
+                $respense->add('You have arrived at your final destination.');
             }
 
             echo $respense->load();
