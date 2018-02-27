@@ -8,9 +8,17 @@
 
 namespace Core;
 
-
+/**
+ * Class JsonRequest
+ * @package Core
+ */
 class JsonRequest implements RequestInterface
 {
+    /**
+     * get and decode json request
+     * @param null $string param name
+     * @return mixed|null
+     */
     public function load($string = null)
     {
         $respense = null;

@@ -12,10 +12,15 @@ use Objects\BubBoardingCard;
 use Objects\TrainBoardingCord;
 use Objects\FlightBordingCard;
 
+/**
+ * Class BoardingCardMapper
+ * @package Services
+ */
 class BoardingCardMapper
 {
     private $objects_namespace = "\Objects\\";
     /**
+     * map stdClass to BoardingCardInterface
      * @param \stdClass $boardCard
      * @return null|BubBoardingCard|FlightBordingCard|TrainBoardingCord
      */

@@ -7,12 +7,19 @@
  */
 
 namespace Config;
-
+/**
+ * Class Config to manage environment configuration
+ * @package Config
+ */
 class Config
 {
     private function __construct(){}
     private function __clone(){}
 
+    /**
+     * instancing config class
+     * @return ConfigInterface
+     */
     public static function getInstance()
     {
         $class = ucfirst(strtolower(trim($GLOBALS['env'])));

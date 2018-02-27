@@ -8,6 +8,10 @@
 
 namespace Core;
 
+/**
+ * Class Autoloader
+ * @package Core
+ */
 class Autoloader
 {
     public static function register(){

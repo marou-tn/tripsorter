@@ -8,7 +8,10 @@
 
 namespace Objects;
 
-
+/**
+ * Interface BoardingCardInterface
+ * @package Objects
+ */
 interface BoardingCardInterface
 {
     /**

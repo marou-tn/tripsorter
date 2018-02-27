@@ -63,6 +63,7 @@ class FlightBordingCard implements BoardingCardInterface
     }
 
     /**
+     * get from
      * @return string from destination
      */
     public function getFrom()
@@ -71,6 +72,7 @@ class FlightBordingCard implements BoardingCardInterface
     }
 
     /**
+     * get to
      * @return string to destination
      */
     public function getTo()

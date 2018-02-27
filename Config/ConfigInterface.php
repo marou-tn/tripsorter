@@ -8,9 +8,22 @@
 
 namespace Config;
 
-
+/**
+ * Interface ConfigInterface
+ * @package Config
+ */
 interface ConfigInterface
 {
+    /**
+     * get config variable by key
+     * @param $key
+     * @return mixed
+     */
     public function get($key);
+
+    /**
+     * get all config array
+     * @return array
+     */
     public function getAll();
 }

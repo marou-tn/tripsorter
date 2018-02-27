@@ -11,6 +11,10 @@ namespace Objects;
 
 use Core\MandatoryParamException;
 
+/**
+ * Class BubBoardingCard
+ * @package Objects
+ */
 class BubBoardingCard implements BoardingCardInterface
 {
     protected $from;
@@ -50,6 +54,7 @@ class BubBoardingCard implements BoardingCardInterface
     }
 
     /**
+     * get from
      * @return string from destination
      */
     public function getFrom()
@@ -58,6 +63,7 @@ class BubBoardingCard implements BoardingCardInterface
     }
 
     /**
+     * get to
      * @return string to destination
      */
     public function getTo()

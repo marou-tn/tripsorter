@@ -8,7 +8,10 @@
 
 namespace Core;
 
-
+/**
+ * Class UnknownTransport
+ * @package Core
+ */
 class UnknownTransport extends \Exception
 {
 // Redefine the exception so message isn't optional

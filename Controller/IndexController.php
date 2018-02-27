@@ -14,8 +14,16 @@ use Core\JsonRespense;
 use Services\BoardingCardMapper;
 use Services\TripSorter;
 
+/**
+ * Class IndexController
+ * @package Controller
+ */
 class IndexController
 {
+    /**
+     * get, sort than return sorted BoardingCards
+     * @param array $params
+     */
     public function index($params = array())
     {
         try {

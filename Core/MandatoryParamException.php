@@ -8,7 +8,10 @@
 
 namespace Core;
 
-
+/**
+ * Class MandatoryParamException
+ * @package Core
+ */
 class MandatoryParamException extends \Exception
 {
     // Redefine the exception so message isn't optional

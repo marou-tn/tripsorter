@@ -8,9 +8,15 @@
 
 namespace Core;
 
-
+/**
+ * Interface RespenseInterface
+ * @package Core
+ */
 interface RespenseInterface
 {
+    /**
+     * load response
+     * @return mixed
+     */
     public function load();
-
 }

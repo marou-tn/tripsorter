@@ -8,18 +8,29 @@
 
 namespace Core;
 
-
+/**
+ * Class JsonRespense
+ * @package Core
+ */
 class JsonRespense implements RespenseInterface
 {
-    protected $respense = [];
+    protected $response = [];
+
+    /**
+     * @return string json encode final response
+     */
     public function load()
     {
-        return json_encode($this->respense);
+        return json_encode($this->response);
     }
 
+    /**
+     * add items to final response
+     * @param $item
+     */
     public function add($item)
     {
-        $this->respense[] = $item;
+        $this->response[] = $item;
     }
 
 }

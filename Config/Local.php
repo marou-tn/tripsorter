@@ -7,7 +7,10 @@
  */
 
 namespace Config;
-
+/**
+ * Class Local that contains all config in local env
+ * @package Config
+ */
 class Local implements ConfigInterface
 {
     private $config = [
@@ -33,7 +36,7 @@ class Local implements ConfigInterface
 
     /**
      * @param $key_string config keys key1.key2.key3 ...
-     * @return array|mixed sub conf
+     * @return array|mixed
      */
     public function get($key_string)
     {

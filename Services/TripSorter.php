@@ -9,8 +9,17 @@
 namespace Services;
 use Objects\BoardingCardInterface;
 
+/**
+ * Class TripSorter
+ * @package Services
+ */
 class TripSorter
 {
+    /**
+     * sort array of BoardingCards
+     * @param array $boardingCards
+     * @return array of BoardingCardInterface
+     */
     public function sort(array $boardingCards)
     {
         $sorted = [array_pop($boardingCards)];
