@@ -57,8 +57,7 @@ class FrontController implements FrontControllerInterface
         $base = $config->get('app.base_url');
         $version = $config->get('version');
 
-//        $this->basePath = $base.'/'.$version.'/';
-        $this->basePath = "tripsorter/public";
+        $this->basePath = $base.'/'.$version.'';
         return $this;
     }
 
@@ -68,7 +67,7 @@ class FrontController implements FrontControllerInterface
     protected function parseUri() {
         $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
         if (strpos($path, $this->basePath) === 0) {
-            $path = substr($path, strlen($this->basePath));
+            $path = substr($path, strlen($this->basePath)+1);
         }
         @list($controller, $action, $params) = explode("/", $path, 3);
         if (!empty($controller)) {
@@ -91,8 +90,7 @@ class FrontController implements FrontControllerInterface
         $controller = ucfirst(strtolower($controller)) . "Controller";
         $controller = self::DEFAULT_NAMESPACE . $controller;
         if (!class_exists($controller)) {
-            throw new InvalidArgumentException(
-                "The action Controller '$controller' has not been defined.");
+            throw new InvalidArgumentException("The action Controller '$controller' has not been defined.");
         }
         $this->controller = $controller;
         return $this;
@@ -106,8 +104,7 @@ class FrontController implements FrontControllerInterface
     public function setAction($action) {
         $reflector = new ReflectionClass($this->controller);
         if (!$reflector->hasMethod($action)) {
-            throw new InvalidArgumentException(
-                "The Controller action '$action' has been not defined.");
+            throw new InvalidArgumentException("The Controller action '$action' has been not defined.");
         }
         $this->action = $action;
         return $this;

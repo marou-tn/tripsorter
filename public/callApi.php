@@ -42,7 +42,7 @@ function CallAPI($method, $url, $data = false)
 }
 
 $method = 'POST';
-$url = 'http://localhost/tripsorter/public/';
+$url = 'http://localhost/tripsorter/api/v1';
 $data = [];
 $data[] = [
     'from' => 'Madrid',

@@ -20,24 +20,27 @@ class Autoloader
 
     public static function autoload($class){
         try{
-            // var_dump($class); => App\Tester\Test
-            // on explose notre variable $class par \
             $parts = preg_split('#\\\#', $class);
 
-            // on extrait le dernier element
+            // get last item
             $className = array_pop($parts);
 
-            // on créé le chemin vers la classe
-            // on utilise DS car plus propre et meilleure portabilité entre les différents systèmes (windows/linux)
-
+            // create class path
             $path = implode(DIRECTORY_SEPARATOR, $parts);
             $file = $className.'.php';
 
             $filepath = DOCROOT. $path .''.DIRECTORY_SEPARATOR.$file;
 
-            // var_dump($filepath); => C:\xampp\htdocs\Labs\Eloyas\app\tester\Test.php
-            //
-            require $filepath;
+            if (file_exists($filepath)) {
+                require $filepath;
+            } else {
+                if (strpos($className, 'Controller')) {
+                    http_response_code(404);
+                    echo ("404 page not found");
+                } else {
+                    throw new \Exception("$filepath was not found");
+                }
+            }
         }catch (Exception $e){
             throw new Exception("Unable to load $className. ".$e->getMessage());
         }
