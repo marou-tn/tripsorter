@@ -1,0 +1,57 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: jendom
+ * Date: 21/02/2018
+ * Time: 15:35
+ */
+
+namespace Config;
+/**
+ * Class Local that contains all config in local env
+ * @package Config
+ */
+class Local implements ConfigInterface
+{
+    private $config = [
+        'version' => 'v1',
+        'app' => [
+            'url' => 'loacalhost',
+            'base_url' => 'tripsorter/api',
+        ],
+        'transport' => [
+            'bus' => 'BubBoardingCard',
+            'train' => 'TrainBoardingCord',
+            'flight' => 'FlightBordingCard',
+        ]
+    ];
+
+    /**
+     * @return array all Config
+     */
+    public function getAll()
+    {
+        return $this->config;
+    }
+
+    /**
+     * @param $key_string config keys key1.key2.key3 ...
+     * @return array|mixed
+     */
+    public function get($key_string)
+    {
+        $keys = explode('.', $key_string);
+        $sub_conf = $this->config;
+        foreach ($keys as $key)
+        {
+            if (isset($sub_conf[$key])) {
+                $sub_conf = $sub_conf[$key];
+            } else {
+                throw new \InvalidArgumentException('Invalid configuration key : '.$key);
+            }
+        }
+
+        return $sub_conf;
+    }
+
+}

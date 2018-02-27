@@ -1,0 +1,31 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: jendom
+ * Date: 21/02/2018
+ * Time: 15:48
+ */
+
+namespace Config;
+/**
+ * Class Config to manage environment configuration
+ * @package Config
+ */
+class Config
+{
+    private function __construct(){}
+    private function __clone(){}
+
+    /**
+     * instancing config class
+     * @return ConfigInterface
+     */
+    public static function getInstance()
+    {
+        $class = ucfirst(strtolower(trim($GLOBALS['env'])));
+        $class = "\Config\\".$class;
+
+        return new $class();
+    }
+
+}
