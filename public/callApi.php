@@ -45,6 +45,14 @@ $method = 'POST';
 $url = 'http://localhost/tripsorter/api/v1';
 $data = [];
 $data[] = [
+    'from' => 'Barcelona',
+    'to' => 'Gerona Airport',
+    'transport' => 'bus',
+    'code' => '',
+    'name' => 'airport bus',
+    'seat' => ''
+];
+$data[] = [
     'from' => 'Madrid',
     'to' => 'Barcelona',
     'transport' => 'train',
@@ -72,17 +80,11 @@ $data[] = [
     'seat' => '7B',
     'baggage' => 'will we automatically transferred from your last leg'
 ];
-$data[] = [
-    'from' => 'Barcelona',
-    'to' => 'Gerona Airport',
-    'transport' => 'bus',
-    'code' => '',
-    'name' => 'airport bus',
-    'seat' => ''
-];
+
 //var_dump($data);die;
 
 $bcs['BoardingCards'] = json_encode($data);
+$bcs['departure'] = json_encode('Madrid');
 
 $result = callAPI($method, $url, $bcs);
 var_dump(json_decode($result));

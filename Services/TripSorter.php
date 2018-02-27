@@ -20,10 +20,11 @@ class TripSorter
      * @param array $boardingCards
      * @return array of BoardingCardInterface
      */
-    public function sort(array $boardingCards)
+    public function sort(array $boardingCards, $departure)
     {
-        $sorted = [array_pop($boardingCards)];
-
+        $key = array_search($departure, array_column((array)$boardingCards, 'from'));
+        $sorted = [$boardingCards[$key]];
+//        $sorted = [array_pop($boardingCards)];
         while (count($boardingCards) > 0) {
             foreach ($boardingCards as $key => $card) {
                 if ( ! $card instanceof BoardingCardInterface) {
@@ -32,7 +33,6 @@ class TripSorter
                 }
 
                 if (end($sorted)->getTo() === $card->getFrom()) {
-//                    array_push($sorted, $card);
                     $sorted[] = $card;
                 } elseif (reset($sorted)->getFrom() === $card->getTo()) {
                     array_unshift($sorted, $card);

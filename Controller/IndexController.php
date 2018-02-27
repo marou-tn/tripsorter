@@ -32,13 +32,17 @@ class IndexController
             $mapper = new BoardingCardMapper();
             $sorter = new TripSorter();
             $boardingCard_arr = $request->load('BoardingCards');
+            $departure = $request->load('departure');
+//            $respense->add($departure);
+//            $respense->add($boardingCard_arr);
+//            echo $respense->load();die;
             if ($boardingCard_arr) {
                 $boardingCard_obj = [];
                 foreach ($boardingCard_arr as $bc) {
                     $boardingCard_obj[] = $mapper->map($bc);
                 }
 
-                $boardingCards = $sorter->sort($boardingCard_obj);
+                $boardingCards = $sorter->sort($boardingCard_obj, $departure);
                 foreach ($boardingCards as $obj) {
                     $respense->add($obj.PHP_EOL.PHP_EOL);
                 }
@@ -49,6 +53,5 @@ class IndexController
         }catch (\Exception $e){
             echo $e->getMessage();
         }
-
     }
 }
